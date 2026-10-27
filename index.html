@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shivansh Sharma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Shivansh Sharma, strategy and technology consultant in London. Client discovery, delivery and automation across healthcare and energy, with a computer science background.">
@@ -137,6 +141,23 @@
   .proof li + li { padding-left: 24px; border-left: 1px solid var(--rule); }
   .proof .ico { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: var(--ultramarine-tint); color: var(--ultramarine); margin-bottom: 4px; transition: background .25s, color .25s, transform .25s var(--ease); }
   .proof li:hover .ico { background: var(--ultramarine); color: var(--paper); }
+
+  .clients { padding-block: 28px 32px; border-bottom: 1px solid var(--rule); }
+  .clients-label { margin: 0 0 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee-track { list-style: none; margin: 0; padding: 0; display: flex; width: max-content; animation: marquee 45s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .client { display: flex; align-items: center; gap: 10px; height: 44px; padding-inline: 30px; filter: grayscale(1); opacity: .6; transition: filter .25s, opacity .25s; }
+  .client:hover { filter: none; opacity: 1; }
+  .client img { height: 26px; width: auto; }
+  .client img.sq { height: 30px; border-radius: 6px; }
+  .client span { font-weight: 600; font-size: 1rem; color: var(--ink); white-space: nowrap; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { -webkit-mask-image: none; mask-image: none; }
+    .marquee-track { width: auto; flex-wrap: wrap; justify-content: center; padding-inline: 16px; }
+    .client.dup { display: none; }
+  }
   .proof .num { font-weight: 600; font-size: var(--step-3); line-height: 1; color: var(--ultramarine); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
   .proof .what { font-size: 0.9375rem; color: var(--ink-soft); line-height: 1.45; }
   .proof .where { font-size: 0.75rem; font-weight: 600; color: var(--sienna); letter-spacing: 0.05em; text-transform: uppercase; }
@@ -416,6 +437,36 @@
       </ul>
     </div>
   </div>
+
+  <section class="clients" aria-labelledby="clients-h">
+    <div class="wrap"><h2 id="clients-h" class="clients-label">Brands I've worked with and on</h2></div>
+    <div class="marquee">
+      <ul class="marquee-track">
+        <li class="client"><img style="height:34px" src="logos/nhsbt.svg" alt="NHS Blood and Transplant" width="253" height="72"></li>
+        <li class="client"><img style="height:38px" src="logos/glue-reply.svg" alt="Glue Reply" width="180" height="61"></li>
+        <li class="client"><img class="sq" src="logos/azure-devops.svg" alt="" width="34" height="35"><span>Azure DevOps</span></li>
+        <li class="client"><img style="height:36px" src="logos/hinkley-point-c.png" alt="Hinkley Point C" width="600" height="181"></li>
+        <li class="client"><img style="height:28px" src="logos/capgemini.svg" alt="Capgemini" width="1024" height="239"></li>
+        <li class="client"><img style="height:17px" src="logos/atkinsrealis.svg" alt="AtkinsRéalis" width="354" height="48"></li>
+        <li class="client"><img class="sq" src="logos/geoq.png" alt="" width="116" height="120"><span>GEOQ</span></li>
+        <li class="client"><img class="sq" src="logos/pe-insights.png" alt="" width="150" height="150"><span>PE Insights</span></li>
+        <li class="client"><img class="sq" src="logos/magna.png" alt="" width="320" height="320"><span>Magna</span></li>
+        <li class="client"><img class="sq" src="logos/ucl.svg" alt="" width="512" height="512"><span>UCL</span></li>
+        <li class="client"><img class="sq" src="logos/bath.svg" alt="" width="64" height="64"><span>University of Bath</span></li>
+        <li class="client dup" aria-hidden="true"><img style="height:34px" src="logos/nhsbt.svg" alt="" width="253" height="72"></li>
+        <li class="client dup" aria-hidden="true"><img style="height:38px" src="logos/glue-reply.svg" alt="" width="180" height="61"></li>
+        <li class="client dup" aria-hidden="true"><img class="sq" src="logos/azure-devops.svg" alt="" width="34" height="35"><span>Azure DevOps</span></li>
+        <li class="client dup" aria-hidden="true"><img style="height:36px" src="logos/hinkley-point-c.png" alt="" width="600" height="181"></li>
+        <li class="client dup" aria-hidden="true"><img style="height:28px" src="logos/capgemini.svg" alt="" width="1024" height="239"></li>
+        <li class="client dup" aria-hidden="true"><img style="height:17px" src="logos/atkinsrealis.svg" alt="" width="354" height="48"></li>
+        <li class="client dup" aria-hidden="true"><img class="sq" src="logos/geoq.png" alt="" width="116" height="120"><span>GEOQ</span></li>
+        <li class="client dup" aria-hidden="true"><img class="sq" src="logos/pe-insights.png" alt="" width="150" height="150"><span>PE Insights</span></li>
+        <li class="client dup" aria-hidden="true"><img class="sq" src="logos/magna.png" alt="" width="320" height="320"><span>Magna</span></li>
+        <li class="client dup" aria-hidden="true"><img class="sq" src="logos/ucl.svg" alt="" width="512" height="512"><span>UCL</span></li>
+        <li class="client dup" aria-hidden="true"><img class="sq" src="logos/bath.svg" alt="" width="64" height="64"><span>University of Bath</span></li>
+      </ul>
+    </div>
+  </section>
 
   <section id="approach" class="block wrap" aria-labelledby="approach-h">
     <div class="section-head">
