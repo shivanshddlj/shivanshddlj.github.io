@@ -1,0 +1,834 @@
+<title>Shivansh Sharma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Shivansh Sharma, strategy and technology consultant in London. Client discovery, delivery and automation across healthcare and energy, with a computer science background.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: a calm reading column on white, with wider grids for proof numbers, projects and paper cards.
+     Ultramarine carries links, actions, icons and structure; burnt sienna marks outcomes and the moving parts.
+     Motion is limited to hover states and the live-status dot.
+     White is the brand ground, so the page commits to a single light look on purpose. */
+  :root {
+    --paper: #ffffff;
+    --ink: #161a2e;
+    --ink-soft: #4a4f66;
+    --ink-faint: #767b93;
+    --rule: #e3e5ef;
+    --wash: #f5f6fb;
+    --ultramarine: #2135b8;
+    --ultramarine-deep: #17268a;
+    --ultramarine-tint: #eceffd;
+    --ultramarine-line: #c9cff5;
+    --sienna: #a2492a;
+    --sienna-bright: #e2704a;
+    --sienna-tint: #fbefe9;
+    --on-ultramarine-soft: #dfe3ff;
+    --on-ultramarine-accent: #ffc9b5;
+
+    /* One family throughout: IBM Plex Sans reads corporate and precise, with tabular figures for the numbers. */
+    --font-display: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-label: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+    --step--1: 0.8125rem;
+    --step-0: 1.0625rem;
+    --step-1: 1.25rem;
+    --step-2: 1.625rem;
+    --step-3: clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
+    --step-4: clamp(2.4rem, 1.5rem + 3.6vw, 3.9rem);
+
+    --measure: 68ch;
+    --wide: 1160px;
+    --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+    --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+    --ease: cubic-bezier(.2, .7, .2, 1);
+    color-scheme: light;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+
+  a { color: var(--ultramarine); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--ultramarine-deep); text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--sienna-bright); outline-offset: 3px; border-radius: 4px; }
+
+  h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  .i { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  .wrap { max-width: var(--wide); margin-inline: auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+
+  .skip { position: absolute; left: 16px; top: -60px; background: var(--ultramarine); color: var(--paper); padding: 10px 14px; border-radius: 6px; z-index: 50; }
+  .skip:focus { top: 12px; color: var(--paper); }
+
+  /* ---------- header ---------- */
+  .site-header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.0625rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+  .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--ultramarine); color: var(--paper); font-size: 0.8125rem; letter-spacing: 0; }
+  .brand:hover { color: var(--ink); }
+  .brand:hover .brand-mark { background: var(--sienna); }
+  .nav { display: flex; align-items: center; gap: 2px; }
+  .nav a { position: relative; color: var(--ink-soft); text-decoration: none; font-size: 0.9375rem; font-weight: 500; padding: 8px 11px; border-radius: 6px; }
+  .nav a:not(.nav-cta)::after { content: ""; position: absolute; left: 11px; right: 11px; bottom: 3px; height: 2px; background: var(--sienna-bright); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+  .nav a:not(.nav-cta):hover::after, .nav a[aria-current="true"]::after { transform: scaleX(1); }
+  .nav a:hover, .nav a[aria-current="true"] { color: var(--ultramarine); }
+  .nav .nav-cta { background: var(--ultramarine); color: var(--paper); margin-left: 8px; padding-inline: 14px; transition: background .2s; }
+  .nav .nav-cta:hover { background: var(--ultramarine-deep); color: var(--paper); }
+  @media (max-width: 800px) { .nav a:not(.nav-cta) { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; isolation: isolate; padding-block: clamp(56px, 9vw, 112px) clamp(40px, 6vw, 72px); }
+  /* gradient glow: two soft lights behind the hero that drift slowly */
+  .hero::before, .hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; filter: blur(90px); }
+  .hero::before { width: 560px; height: 560px; right: -140px; top: -220px; background: var(--ultramarine); opacity: .26; animation: drift-a 18s ease-in-out infinite alternate; }
+  .hero::after { width: 440px; height: 440px; right: 260px; top: 80px; background: var(--sienna-bright); opacity: .26; animation: drift-b 22s ease-in-out infinite alternate; }
+  @keyframes drift-a { to { transform: translate(-80px, 60px) scale(1.08); } }
+  @keyframes drift-b { to { transform: translate(90px, -40px) scale(.92); } }
+  @media (max-width: 760px) {
+    .hero::before { width: 320px; height: 320px; right: -120px; top: -120px; filter: blur(60px); }
+    .hero::after { width: 260px; height: 260px; right: 40px; top: 160px; filter: blur(60px); }
+  }
+  .hero-copy { min-width: 0; }
+  .eyebrow { font-size: var(--step--1); font-weight: 500; color: var(--ink-faint); letter-spacing: 0.02em; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .eyebrow .live { color: var(--ink-soft); }
+  .eyebrow .live::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--sienna-bright); margin-right: 8px; vertical-align: 1px; box-shadow: 0 0 0 0 var(--sienna-bright); animation: ping 2.4s var(--ease) infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sienna-bright) 55%, transparent); } 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
+  .hero h1 { font-weight: 600; font-size: var(--step-4); line-height: 1.05; letter-spacing: -0.035em; margin-top: 22px; max-width: 17ch; }
+  .hero h1 em { font-style: normal; color: var(--sienna); }
+  .hero .lede { margin-top: 24px; max-width: 56ch; font-size: var(--step-1); line-height: 1.55; color: var(--ink-soft); }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+  .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font: 600 1rem/1 var(--font-body);
+    padding: 14px 20px; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--ultramarine); cursor: pointer;
+    transition: background .2s, color .2s, transform .2s var(--ease);
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn .i { width: 18px; height: 18px; transition: transform .25s var(--ease); }
+  .btn:hover .i.arrow { transform: translate(2px, -2px); }
+  .btn-primary { background: var(--ultramarine); color: var(--paper); }
+  .btn-primary:hover { background: var(--ultramarine-deep); border-color: var(--ultramarine-deep); color: var(--paper); text-decoration: none; }
+  .btn-ghost { background: transparent; color: var(--ultramarine); }
+  .btn-ghost:hover { background: var(--ultramarine-tint); text-decoration: none; }
+
+  /* ---------- proof strip ---------- */
+  .proof { border-block: 1px solid var(--rule); }
+  .proof ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof li { padding: 28px 24px 28px 0; display: grid; gap: 8px; align-content: start; }
+  .proof li + li { padding-left: 24px; border-left: 1px solid var(--rule); }
+  .proof .ico { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: var(--ultramarine-tint); color: var(--ultramarine); margin-bottom: 4px; transition: background .25s, color .25s, transform .25s var(--ease); }
+  .proof li:hover .ico { background: var(--ultramarine); color: var(--paper); }
+  .proof .num { font-weight: 600; font-size: var(--step-3); line-height: 1; color: var(--ultramarine); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .proof .what { font-size: 0.9375rem; color: var(--ink-soft); line-height: 1.45; }
+  .proof .where { font-size: 0.75rem; font-weight: 600; color: var(--sienna); letter-spacing: 0.05em; text-transform: uppercase; }
+  @media (max-width: 860px) {
+    .proof ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .proof li:nth-child(3) { padding-left: 0; border-left: 0; }
+    .proof li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
+  @media (max-width: 440px) {
+    .proof ul { grid-template-columns: minmax(0, 1fr); }
+    .proof li, .proof li + li { padding-left: 0; border-left: 0; padding-block: 20px; }
+    .proof li + li { border-top: 1px solid var(--rule); }
+  }
+
+  /* ---------- sections ---------- */
+  section.block { padding-block: clamp(64px, 9vw, 104px); }
+  section.block + section.block { border-top: 1px solid var(--rule); }
+  .section-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: var(--measure); }
+  .kicker { font-size: var(--step--1); font-weight: 600; color: var(--sienna); letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; }
+  .kicker::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+  .section-head h2 { font-weight: 600; font-size: var(--step-3); line-height: 1.12; letter-spacing: -0.03em; }
+  .section-head p { color: var(--ink-soft); }
+
+  /* approach: a real sequence, so it is numbered */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: step; }
+  .steps li { counter-increment: step; position: relative; display: grid; gap: 12px; align-content: start; padding: 26px; border-radius: 14px; border: 1px solid var(--rule); background: var(--paper); transition: border-color .25s, transform .25s var(--ease), box-shadow .25s; }
+  .steps li:hover { border-color: var(--ultramarine-line); transform: translateY(-3px); box-shadow: 0 12px 28px -18px color-mix(in srgb, var(--ultramarine) 45%, transparent); }
+  .steps .top { display: flex; align-items: center; justify-content: space-between; }
+  .steps .ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--ultramarine); color: var(--paper); }
+  .steps li:last-child .ico { background: var(--sienna); }
+  .steps .top::after { content: "0" counter(step); font-size: 2rem; font-weight: 600; color: var(--ultramarine-tint); letter-spacing: -0.04em; line-height: 1; }
+  .steps h3 { font-size: var(--step-1); font-weight: 600; }
+  .steps p { color: var(--ink-soft); font-size: 1rem; }
+  @media (max-width: 800px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+  /* experience */
+  .roles { display: grid; gap: 56px; }
+  .role { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 32px; }
+  .role-meta { display: grid; gap: 4px; align-content: start; }
+  .logo { display: flex; align-items: center; justify-content: center; width: 180px; max-width: 100%; height: 72px; padding: 12px 18px; border-radius: 14px; background: var(--paper); border: 1px solid var(--rule); margin-bottom: 14px; transition: border-color .25s; }
+  .role:hover .logo { border-color: var(--ultramarine-line); }
+  .logo img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+  .role-meta .dates { font-size: var(--step--1); font-weight: 500; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+  .role-meta .org { font-weight: 700; font-size: var(--step-1); }
+  .role-meta .loc { font-size: 0.9375rem; color: var(--ink-soft); }
+  .role-body { display: grid; gap: 18px; min-width: 0; max-width: var(--measure); }
+  .role-body h3 { font-weight: 600; font-size: var(--step-2); line-height: 1.2; letter-spacing: -0.02em; }
+  .role-body .context { color: var(--ink-soft); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .chips li { font-size: 0.8125rem; font-weight: 500; color: var(--ultramarine-deep); background: var(--ultramarine-tint); padding: 4px 10px; border-radius: 999px; }
+  .wins { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .wins li { position: relative; padding-left: 22px; }
+  .wins li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 10px; height: 2px; background: var(--sienna-bright); }
+  .wins b { color: var(--sienna); font-weight: 700; font-variant-numeric: tabular-nums; }
+  @media (max-width: 760px) { .role { grid-template-columns: minmax(0, 1fr); gap: 14px; } }
+
+  /* projects */
+  .projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .ai-tag { display: inline-flex; align-items: center; gap: 5px; vertical-align: middle; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em; color: var(--sienna); background: var(--sienna-tint); border: 1px solid color-mix(in srgb, var(--sienna-bright) 30%, transparent); padding: 3px 9px 3px 7px; border-radius: 999px; white-space: nowrap; }
+  .ai-tag .i { width: 14px; height: 14px; }
+  .role-body h3 .ai-tag { margin-left: 8px; position: relative; top: -2px; }
+  .ai-band { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; margin-top: 20px; padding: 22px 26px; border-radius: 14px; background: var(--sienna-tint); border: 1px solid color-mix(in srgb, var(--sienna-bright) 25%, transparent); }
+  .ai-band-ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--sienna); color: var(--paper); }
+  .ai-band h3 { font-size: var(--step-0); font-weight: 700; margin-bottom: 4px; }
+  .ai-band p { color: var(--ink-soft); font-size: 1rem; max-width: 80ch; }
+  .project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .mini { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .mini li { position: relative; padding-left: 16px; font-size: 0.9375rem; color: var(--ink-soft); }
+  .mini li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 7px; height: 2px; background: var(--sienna-bright); }
+  .mini b { color: var(--sienna); }
+  .project { position: relative; display: grid; grid-template-rows: auto auto auto auto 1fr auto; gap: 12px; padding: 26px; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); min-width: 0; overflow: hidden; transition: border-color .25s, transform .25s var(--ease), box-shadow .25s; }
+  .project::after { content: ""; position: absolute; inset: auto 0 0 0; height: 3px; background: linear-gradient(90deg, var(--ultramarine), var(--sienna-bright)); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+  .project:hover { border-color: var(--ultramarine-line); transform: translateY(-3px); box-shadow: 0 14px 30px -20px color-mix(in srgb, var(--ultramarine) 50%, transparent); }
+  .project:hover::after { transform: scaleX(1); }
+  .project .brandmark { display: block; width: 52px; height: 52px; border-radius: 12px; object-fit: contain; background: var(--paper); border: 1px solid var(--rule); }
+  .project .type { font-size: 0.75rem; font-weight: 600; color: var(--sienna); letter-spacing: 0.06em; text-transform: uppercase; }
+  .project h3 { font-size: var(--step-1); font-weight: 700; }
+  .project p { color: var(--ink-soft); font-size: 1rem; }
+  .project a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.9375rem; text-decoration: none; }
+  .project a::before { content: ""; position: absolute; inset: 0; }
+  .project a .i { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+  .project:hover a .i { transform: translate(2px, -2px); }
+  @media (max-width: 900px) { .projects { grid-template-columns: minmax(0, 1fr); } }
+
+  /* research */
+  .feature {
+    display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px;
+    padding: clamp(24px, 4vw, 44px); border-radius: 16px; background: var(--ultramarine-tint); margin-bottom: 56px;
+  }
+  .feature .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ultramarine-deep); }
+  .feature h3 { font-weight: 600; font-size: var(--step-2); line-height: 1.25; margin-top: 12px; letter-spacing: -0.02em; }
+  .feature .abstract { margin-top: 16px; color: var(--ink-soft); max-width: 60ch; }
+  .feature .actions { margin-top: 24px; }
+  .feature-side { display: grid; gap: 20px; align-content: start; min-width: 0; }
+  .figure { margin: 0; border-radius: 12px; overflow: hidden; background: var(--paper); border: 1px solid var(--ultramarine-line); }
+  .figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .5s var(--ease); }
+  .figure:hover img { transform: scale(1.04); }
+  .figure figcaption { font-size: 0.8125rem; color: var(--ink-faint); padding: 10px 14px; border-top: 1px solid var(--rule); }
+  .facts { display: grid; margin: 0; }
+  .facts div { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 12px; padding-block: 11px; border-bottom: 1px solid color-mix(in srgb, var(--ultramarine) 18%, transparent); }
+  .facts div:first-child { border-top: 1px solid color-mix(in srgb, var(--ultramarine) 18%, transparent); }
+  .facts dt { font-size: 0.75rem; font-weight: 600; color: var(--ink-faint); letter-spacing: 0.04em; text-transform: uppercase; padding-top: 3px; }
+  .facts dd { margin: 0; font-size: 0.9375rem; }
+  @media (max-width: 860px) { .feature { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+
+  .papers-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; margin-bottom: 24px; }
+  .papers-head h3 { font-size: var(--step-1); font-weight: 700; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filters button {
+    font: 500 0.875rem/1 var(--font-body); color: var(--ink-soft); background: var(--paper);
+    border: 1px solid var(--rule); padding: 9px 14px; border-radius: 999px; cursor: pointer; transition: border-color .2s, color .2s, background .2s;
+  }
+  .filters button:hover { border-color: var(--ultramarine); color: var(--ultramarine); }
+  .filters button[aria-pressed="true"] { background: var(--ultramarine); border-color: var(--ultramarine); color: var(--paper); }
+
+  .papers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .papers.is-all .paper:first-child { grid-column: span 2; }
+  .papers.is-all .paper:first-child .thumb img { aspect-ratio: 16 / 7.4; }
+  .paper { position: relative; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: var(--paper); min-width: 0; transition: border-color .25s, transform .25s var(--ease), box-shadow .25s; animation: card-in .45s var(--ease) both; }
+  .paper:hover { border-color: var(--ultramarine-line); transform: translateY(-3px); box-shadow: 0 14px 30px -20px color-mix(in srgb, var(--ultramarine) 50%, transparent); }
+  @keyframes card-in { from { transform: translateY(8px); } to { transform: none; } }
+  .thumb { position: relative; margin: 0; background: var(--paper); border-bottom: 1px solid var(--rule); overflow: hidden; }
+  .thumb img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .5s var(--ease); }
+  .thumb.is-logo { background: var(--wash); }
+  .thumb.is-logo img { object-fit: contain; padding: 14% 22%; }
+  .paper:hover .thumb img { transform: scale(1.05); }
+  .thumb .theme { position: absolute; left: 12px; top: 12px; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; background: var(--paper); color: var(--sienna); border: 1px solid var(--rule); }
+  .paper-body { display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; padding: 18px 20px 20px; }
+  .paper .module { font-size: 0.75rem; font-weight: 500; color: var(--ink-faint); letter-spacing: 0.02em; }
+  .paper h4 { font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
+  .paper p { font-size: 0.9375rem; color: var(--ink-soft); }
+  .paper a.read { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.875rem; font-weight: 600; text-decoration: none; }
+  .paper a.read::before { content: ""; position: absolute; inset: 0; }
+  .paper a.read .i { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+  .paper:hover a.read .i { transform: translate(2px, -2px); }
+  @media (max-width: 960px) { .papers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .papers { grid-template-columns: minmax(0, 1fr); } .papers.is-all .paper:first-child { grid-column: auto; } .papers.is-all .paper:first-child .thumb img { aspect-ratio: 16 / 10; } }
+
+  /* education + skills */
+  .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+  .two-col > * { min-width: 0; }
+  .edu { display: grid; gap: 16px; }
+  .edu-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 16px; padding: 22px; border: 1px solid var(--rule); border-radius: 14px; }
+  .edu-item .crest { grid-row: span 4; display: block; width: 52px; height: 52px; padding: 6px; border-radius: 12px; object-fit: contain; background: var(--paper); border: 1px solid var(--rule); }
+  .edu-item .dates { font-size: var(--step--1); font-weight: 500; color: var(--ink-faint); }
+  .edu-item h3 { font-size: var(--step-1); font-weight: 700; }
+  .edu-item .degree { font-weight: 500; }
+  .edu-item .degree span { color: var(--sienna); }
+  .edu-item p.small { color: var(--ink-soft); font-size: 0.9375rem; margin-top: 6px; }
+  .skill-group { display: grid; gap: 10px; }
+  .skill-group + .skill-group { margin-top: 26px; }
+  .skill-group h3 { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  .skill-group h3 .i { width: 16px; height: 16px; color: var(--ultramarine); }
+  @media (max-width: 860px) { .two-col { grid-template-columns: minmax(0, 1fr); } }
+
+  /* about: blog + interests, links out */
+  .about-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; }
+  .blog { position: relative; display: grid; gap: 14px; align-content: start; padding: clamp(24px, 3.5vw, 36px); border-radius: 16px; background: var(--ultramarine); color: var(--paper); overflow: hidden; }
+  .blog::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 220px; height: 220px; border-radius: 50%; border: 36px solid color-mix(in srgb, var(--sienna-bright) 55%, transparent); transition: transform .6s var(--ease); }
+  .blog:hover::after { transform: scale(1.12) rotate(20deg); }
+  .blog .ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: color-mix(in srgb, var(--paper) 16%, transparent); color: var(--paper); }
+  .blog .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-ultramarine-accent); }
+  .blog h3 { font-weight: 600; font-size: var(--step-2); line-height: 1.2; letter-spacing: -0.02em; max-width: 20ch; }
+  .blog p { color: var(--on-ultramarine-soft); max-width: 50ch; position: relative; z-index: 1; }
+  .blog .btn { justify-self: start; margin-top: 8px; background: var(--paper); color: var(--ultramarine); border-color: var(--paper); position: relative; z-index: 1; }
+  .blog .btn:hover { background: var(--sienna-tint); color: var(--ultramarine-deep); }
+  .blog :focus-visible { outline-color: var(--on-ultramarine-accent); }
+  .interests { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
+  .interest { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--rule); border-radius: 14px; transition: border-color .25s, transform .25s var(--ease), background .25s; }
+  .interest:hover { border-color: var(--ultramarine-line); background: var(--wash); transform: translateX(4px); }
+  .interest .ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--sienna-tint); color: var(--sienna); }
+  .interest b { display: block; font-weight: 600; }
+  .interest span.sub { font-size: 0.875rem; color: var(--ink-soft); }
+  .interest a { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9375rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .interest a::before { content: ""; position: absolute; inset: 0; }
+  .interest .yt { width: 24px; height: 17px; flex: none; }
+  .interest a .i { width: 16px; height: 16px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 460px) { .interest { grid-template-columns: auto minmax(0, 1fr); } .interest a { grid-column: 2; } }
+
+  /* contact */
+  .contact { position: relative; background: var(--ultramarine); color: var(--paper); overflow: hidden; }
+  .contact::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(color-mix(in srgb, var(--paper) 14%, transparent) 1px, transparent 1.4px); background-size: 22px 22px; -webkit-mask-image: linear-gradient(110deg, transparent 35%, #000); mask-image: linear-gradient(110deg, transparent 35%, #000); }
+  .contact .wrap { position: relative; padding-block: clamp(64px, 9vw, 104px); display: grid; gap: 22px; }
+  .contact .kicker { color: var(--on-ultramarine-accent); }
+  .contact h2 { font-weight: 600; font-size: var(--step-3); line-height: 1.12; letter-spacing: -0.03em; max-width: 20ch; }
+  .contact p { max-width: 56ch; color: var(--on-ultramarine-soft); }
+  .contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
+  .email-box { display: inline-flex; align-items: center; border: 1.5px solid color-mix(in srgb, var(--paper) 40%, transparent); border-radius: 8px; overflow: hidden; max-width: 100%; }
+  .email-box .i { margin-left: 14px; color: var(--on-ultramarine-accent); }
+  .email-box code { font-family: var(--font-label); font-weight: 500; font-size: 0.9375rem; padding: 13px 14px 13px 10px; color: var(--paper); user-select: all; overflow-wrap: anywhere; }
+  .email-box button { font: 600 0.9375rem/1 var(--font-body); background: var(--paper); color: var(--ultramarine); border: 0; padding: 14px 16px; cursor: pointer; align-self: stretch; }
+  .email-box button:hover { background: var(--sienna-tint); }
+  .contact .btn-light { background: transparent; color: var(--paper); border-color: color-mix(in srgb, var(--paper) 60%, transparent); }
+  .contact .btn-light:hover { background: color-mix(in srgb, var(--paper) 10%, transparent); color: var(--paper); }
+  .contact :focus-visible { outline-color: var(--on-ultramarine-accent); }
+  .copy-status { font-size: 0.875rem; min-height: 1.4em; }
+
+  footer { border-top: 1px solid var(--rule); }
+  footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 0.875rem; color: var(--ink-faint); }
+  footer .credits { flex-basis: 100%; font-size: 0.75rem; }
+  footer .credits a { color: inherit; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 4-8 4 8 4 8-4-8-4Z"/><path d="m4 12 8 4 8-4"/><path d="m4 16 8 4 8-4"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/></symbol>
+    <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v2.5a3 3 0 0 0 3 3H14"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14.3c1.8.8 3 2.9 3 5.7"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 4.5 14H11l-1 7 8.5-11H12l1-7Z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5.5L12 3l8 2.5V21"/><path d="M3 21h18"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M10 21v-4h4v4"/></symbol>
+    <symbol id="i-community" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="12" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0"/><path d="M2 19a3.2 3.2 0 0 1 4-3M22 19a3.2 3.2 0 0 0-4-3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9 12 5l9.5 4-9.5 4-9.5-4Z"/><path d="M6.5 11v4.5c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3V11"/><path d="M21.5 9v5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M3 12.5h18"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><circle cx="7" cy="17.5" r="2.8"/><circle cx="17" cy="15.5" r="2.8"/><path d="M9.8 17.5V5.5L19.8 3.5v12"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></symbol>
+    <symbol id="i-chef" viewBox="0 0 24 24"><path d="M7 16.5h10V20a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3.5Z"/><path d="M7 16.5a4 4 0 0 1-1.2-7.8A4.6 4.6 0 0 1 12 4.5a4.6 4.6 0 0 1 6.2 4.2A4 4 0 0 1 17 16.5"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5c.6 4.2 2.6 6.4 7 7-4.4.6-6.4 2.8-7 7-.6-4.2-2.6-6.4-7-7 4.4-.6 6.4-2.8 7-7Z"/><path d="M19 3v3M17.5 4.5h3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Shivansh Sharma</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#approach">Approach</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#about">About</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div id="top" class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="live">Consultant at Glue Reply</span>
+        <span>London, UK</span>
+        <span>BSc Computer Science · MSc Technology Management</span>
+      </p>
+      <h1>I turn messy technology problems into <em>delivered</em> outcomes.</h1>
+      <p class="lede">
+        Strategy and technology consultant with <strong>3+ years</strong> across <strong>healthcare and energy</strong>.
+        I lead customer discovery, shape the proposition and business case, then stay through delivery, increasingly using AI and automation to make delivery faster and easier to adopt.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/shivansh-sharma-230201/" target="_blank" rel="noopener">
+          LinkedIn profile <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="proof" aria-label="Selected results">
+    <div class="wrap">
+      <ul>
+        <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></span><span class="num">£1M+</span><span class="what">technology pipeline progressed across 5 value streams</span><span class="where">NHS Blood and Transplant</span></li>
+        <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg></span><span class="num">£200k</span><span class="what">estimated annual savings from 7 automated delivery workflows</span><span class="where">AI + Cloud solutions on Azure DevOps</span></li>
+        <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">50%</span><span class="what">faster discovery and prospecting packs from AI-enabled tools I directed</span><span class="where">Glue Reply</span></li>
+        <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="num">2×</span><span class="what">operational efficiency from process automation, recognised with a Growth Award</span><span class="where">Hinkley Point C</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="approach" class="block wrap" aria-labelledby="approach-h">
+    <div class="section-head">
+      <span class="kicker">Approach</span>
+      <h2 id="approach-h">From first conversation to rollout</h2>
+      <p>I work best on ambiguous, fast-moving programmes where someone needs to own the whole path, not just one stage of it.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <div class="top"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span></div>
+        <h3>Discover</h3>
+        <p>Run consultative discovery with technical and non-technical stakeholders to find the real pain points and what success looks like for them.</p>
+      </li>
+      <li>
+        <div class="top"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg></span></div>
+        <h3>Shape</h3>
+        <p>Turn that input into a clear proposition: value case, effort estimates, statements of work and the financial analysis that unlocks investment.</p>
+      </li>
+      <li>
+        <div class="top"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg></span></div>
+        <h3>Deliver</h3>
+        <p>Align product, engineering and commercial workstreams, unblock the critical path and automate the repetitive parts so delivery scales.</p>
+      </li>
+    </ol>
+    <aside class="ai-band" aria-labelledby="ai-band-h">
+      <span class="ai-band-ico"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span>
+      <div>
+        <h3 id="ai-band-h">AI at every stage</h3>
+        <p>AI-assisted research to find and qualify opportunities, AI-generated discovery packs to shape propositions faster, and automated workflows that keep delivery moving once it's live.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section id="experience" class="block wrap" aria-labelledby="experience-h">
+    <div class="section-head">
+      <span class="kicker">Experience</span>
+      <h2 id="experience-h">Where I've delivered</h2>
+    </div>
+    <div class="roles">
+      <article class="role">
+        <div class="role-meta">
+          <span class="logo"><img src="logos/glue-reply.svg" alt="Glue Reply logo" width="180" height="61"></span>
+          <span class="dates">Sept 2025 – Present</span>
+          <span class="org">Glue Reply</span>
+          <span class="loc">London, UK</span>
+        </div>
+        <div class="role-body">
+          <h3>Consultant <span class="ai-tag"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>AI delivery</span></h3>
+          <p class="context">Building and managing a pipeline of delivery and tooling opportunities at <a href="https://www.nhsbt.nhs.uk/" target="_blank" rel="noopener">NHS Blood and Transplant</a>, driving adoption of AI and cloud technology across the UK's blood and organ supply chain.</p>
+          <ul class="chips" aria-label="Focus areas">
+            <li>Pre-sales</li><li>Stakeholder management</li><li>Solution design</li><li>AI &amp; cloud adoption</li>
+          </ul>
+          <ul class="wins">
+            <li>Progressed a <b>£1M+</b> technology pipeline across <b>5</b> value streams, engaging <b>100+</b> stakeholders from discovery to adoption.</li>
+            <li>Day-to-day commercial liaison for <b>70+</b> stakeholders including senior leadership, turning technical and customer input into clear priorities.</li>
+            <li>Designed and automated <b>7</b> delivery workflows in Azure DevOps, cutting rework and approval time by <b>25%</b> for an estimated <b>£200k</b> in annual savings.</li>
+            <li>Directed AI-enabled internal tools that generate discovery and prospecting packs, cutting pack creation time by <b>50%</b>.</li>
+            <li>Produced business cases, effort estimates, SoWs and pipeline analysis behind technology investment and resourcing decisions.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role">
+        <div class="role-meta">
+          <span class="logo"><img src="logos/capgemini.svg" alt="Capgemini logo" width="180" height="42"></span>
+          <span class="dates">Sept 2022 – Sept 2024</span>
+          <span class="org">Capgemini</span>
+          <span class="loc">Bath, UK</span>
+        </div>
+        <div class="role-body">
+          <h3>Associate Software Consultant</h3>
+          <p class="context">Software delivery on safety-critical systems for the <a href="https://www.power-technology.com/news/atkins-to-assess-reactor-protection-software-for-hinkley-point-c/" target="_blank" rel="noopener">Hinkley Point C</a> nuclear programme, working with AtkinsRéalis in a high-pressure, regulated, multi-million-pound environment.</p>
+          <ul class="chips" aria-label="Focus areas">
+            <li>Safety-critical C</li><li>QA &amp; static analysis</li><li>Agile delivery</li><li>Project leadership</li><li>Client delivery</li>
+          </ul>
+          <ul class="wins">
+            <li>Received a <b>Growth Award</b> from AtkinsRéalis for my work on Hinkley Point C.</li>
+            <li>Built reusable templates for complex code modules, cutting toil by <b>40%</b>, and <b>doubled</b> team workflow efficiency by bringing agile practices into day-to-day delivery.</li>
+            <li>Ran QA on safety-critical C code, iterating static analysis and writing detailed reports against product requirements so releases deployed reliably.</li>
+            <li>Took on project lead duties: assigning tasks, mentoring, leading agile ceremonies and tracking delivery KPIs with client and cross-functional teams.</li>
+            <li>Interviewed candidates for software engineering roles, supported graduate onboarding, and ran data analysis workshops and award ceremonies for <b>100+</b> people.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" class="block wrap" aria-labelledby="projects-h">
+    <div class="section-head">
+      <span class="kicker">External projects</span>
+      <h2 id="projects-h">Ventures I've helped build</h2>
+      <p>Startups and communities where I took AI and data work from idea to something live.</p>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <div class="project-top"><img class="brandmark" src="logos/geoq.png" alt="GEOQ logo" width="52" height="52"><span class="ai-tag"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>AI product</span></div>
+        <span class="type">Go-to-market · Product strategy</span>
+        <h3>GEOQ</h3>
+        <p>GEOQ is an AI search platform: it measures and improves how brands show up in answers from ChatGPT, Gemini and other AI assistants, known as generative engine optimisation.</p>
+        <ul class="mini">
+          <li>Defined product strategy, positioning and go-to-market for the GenAI insights product.</li>
+          <li>Ran pricing, messaging and outreach experiments across 30–50 SME accounts in a pilot region.</li>
+          <li>Wrote build-vs-buy business cases and pitched the AI value proposition to enterprise prospects.</li>
+        </ul>
+        <a href="https://geoq.ai/" target="_blank" rel="noopener">geoq.ai <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="project">
+        <div class="project-top"><img class="brandmark" src="logos/pe-insights.png" alt="Private Equity Insights logo" width="52" height="52"><span class="ai-tag"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>GenAI &amp; data</span></div>
+        <span class="type">Internship · Apr – Jun 2025</span>
+        <h3>Private Equity Insights</h3>
+        <p>Data-led prospecting to connect LPs and GPs across Europe for flagship private equity conferences.</p>
+        <ul class="mini">
+          <li>Mapped <b>50,000</b> private equity entities worldwide using REST APIs and advanced SQL, with Python for cleaning and analysis.</li>
+          <li>Used GenAI research tools to target senior decision-makers and manage client data in the CRM.</li>
+          <li>Turned campaign data into recommendations for the C-suite.</li>
+        </ul>
+        <a href="https://pe-insights.com/" target="_blank" rel="noopener">pe-insights.com <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="project">
+        <div class="project-top"><img class="brandmark" src="logos/magna.png" alt="Magna logo" width="52" height="52"><span class="ai-tag"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>AI automation</span></div>
+        <span class="type">Technical Project Associate · Jul 2025 – Present</span>
+        <h3>Magna</h3>
+        <p>A growing leadership community for senior women, where I own the platform and tooling part-time.</p>
+        <ul class="mini">
+          <li>Evaluated community and CRM vendors, then ran end-to-end build and integration of the platform.</li>
+          <li>Connected third-party APIs and applied AI to automate member workflows and improve the experience.</li>
+          <li>Built and maintain a lightweight CRM for data, reporting and member communications.</li>
+        </ul>
+        <a href="https://magnaclub.circle.so/homepage" target="_blank" rel="noopener">magnaclub.circle.so <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </section>
+
+  <section id="research" class="block wrap" aria-labelledby="research-h">
+    <div class="section-head">
+      <span class="kicker">Research</span>
+      <h2 id="research-h">Writing from my MSc at UCL</h2>
+      <p>Technology strategy, adoption and resilience, applied to real organisations and infrastructure.</p>
+    </div>
+
+    <article class="feature" aria-labelledby="diss-h">
+      <div>
+        <span class="label">MSc dissertation · Aug 2025</span>
+        <h3 id="diss-h">Strategic Adoption of Industry-Leading AI Decarbonisation Technologies in India's Non-Renewable Energy Infrastructure</h3>
+        <p class="abstract">
+          A multi-method qualitative study of what helps and blocks AI adoption for decarbonisation in India's non-renewable energy assets.
+          It combines the TOE framework with UTAUT2 and finds the technology is high-impact and feasible, but scaling is held back by low maturity, legacy systems, thin digital infrastructure, AI skills gaps, cost and shifting regulation.
+          The recommendations focus on stronger data foundations, regulatory incentives and using AI to build individual capability.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/1F4lfQmvjQDvF8gPtUh5NJFBd0iUaGLjP/view" target="_blank" rel="noopener">Read the dissertation <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1WoKhakRfBxX53ahHwy2nGimcSISpSBDg/view" target="_blank" rel="noopener">Concept report</a>
+        </div>
+      </div>
+      <div class="feature-side">
+        <figure class="figure">
+          <img src="thumbs/diss.jpg" alt="Coal-fired thermal power plant with a cooling tower and a red-and-white chimney under a blue sky." width="1200" height="750" loading="lazy">
+          <figcaption>Coal-fired thermal power, the assets the research looks at decarbonising with AI</figcaption>
+        </figure>
+        <dl class="facts">
+          <div><dt>Institution</dt><dd>UCL Centre for Systems Engineering</dd></div>
+          <div><dt>Frameworks</dt><dd>TOE · UTAUT2</dd></div>
+          <div><dt>Method</dt><dd>Multi-method qualitative, triangulating industry evidence and stakeholder perspectives</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <div class="papers-head">
+      <h3>Research papers</h3>
+      <div class="filters" role="group" aria-label="Filter papers by theme">
+        <button type="button" id="f-all" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" id="f-strategy" data-filter="strategy" aria-pressed="false">Strategy</button>
+        <button type="button" id="f-systems" data-filter="systems" aria-pressed="false">Systems &amp; risk</button>
+        <button type="button" id="f-sustain" data-filter="sustainability" aria-pressed="false">Sustainability</button>
+      </div>
+    </div>
+    <ul class="papers is-all" id="papers">
+      <li class="paper" data-theme="sustainability">
+        <figure class="thumb"><img src="thumbs/tfs.jpg" alt="Fish swimming among plastic waste underwater." width="1200" height="750" loading="lazy"><span class="theme">Sustainability</span></figure>
+        <div class="paper-body">
+          <span class="module">Transformation for Sustainability · Aug 2025</span>
+          <h4>Reducing marine pollution under SDG 14.1</h4>
+          <p>Rich pictures, causal loop diagrams and a stakeholder influence-interest grid to map how land-based pollution reaches the ocean, and the social and technology levers to change it.</p>
+          <a class="read" href="https://drive.google.com/file/d/1DGcOCNbTXSjdZvKEY_A1BKMgSEaTc_ro/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+      <li class="paper" data-theme="sustainability">
+        <figure class="thumb"><img src="thumbs/pcr.jpg" alt="Power station chimneys and cooling towers releasing steam." width="1200" height="750" loading="lazy"><span class="theme">Sustainability</span></figure>
+        <div class="paper-body">
+          <span class="module">Research Project Concept Report · May 2025</span>
+          <h4>Smart decarbonisation technologies in India's energy infrastructure</h4>
+          <p>The proposal behind the dissertation: strategic importance, literature review, UTAUT adoption model, research strategy and success criteria.</p>
+          <a class="read" href="https://drive.google.com/file/d/1WoKhakRfBxX53ahHwy2nGimcSISpSBDg/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+      <li class="paper" data-theme="strategy">
+        <figure class="thumb"><img src="thumbs/uspot-app.jpg" alt="The uSpot mobile app showing a campus map and a live feed of reported issues." width="1200" height="750" loading="lazy"><span class="theme">Strategy</span></figure>
+        <div class="paper-body">
+          <span class="module">New Product Development · Apr 2025</span>
+          <h4>uSpot: a design-led new product process</h4>
+          <p>An issue-reporting app for UCL: Figma mock-ups, concept and A/B testing, then a Dragon's Den-style pitch to established entrepreneurs.</p>
+          <a class="read" href="https://drive.google.com/file/d/1maQUguPTYRRlwgd8NTZb0gdk5UnRZUO4/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+      <li class="paper" data-theme="systems">
+        <figure class="thumb is-logo"><img src="logos/upi.svg" alt="Unified Payments Interface (UPI) logo." width="1200" height="750" loading="lazy"><span class="theme">Systems &amp; risk</span></figure>
+        <div class="paper-body">
+          <span class="module">Risk, Reliability and Resilience · Jan 2025</span>
+          <h4>A premortem of India's Unified Payments Interface</h4>
+          <p>Imagines how UPI could fail, starting with data breaches, and what would make digital payments more resilient.</p>
+          <a class="read" href="https://drive.google.com/file/d/1IyOyJQLplYpV2Hut2VNZgr-ZvRaNz7m5/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+      <li class="paper" data-theme="strategy">
+        <figure class="thumb is-logo"><img src="logos/sage.svg" alt="The Sage Group logo." width="1200" height="750" loading="lazy"><span class="theme">Strategy</span></figure>
+        <div class="paper-body">
+          <span class="module">The Business Environment · Jan 2025</span>
+          <h4>The Sage Group: strategy, business model and ESG</h4>
+          <p>Porter's Five Forces, value proposition and business model canvases, profit sustainability and ESG performance for the UK software company.</p>
+          <a class="read" href="https://drive.google.com/file/d/1Kyp6no71d8sM4nyofvbq9-q6vVoej3KQ/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+      <li class="paper" data-theme="strategy">
+        <figure class="thumb"><img src="thumbs/exo.jpg" alt="An industrial worker wearing an upper-body exoskeleton while working overhead." width="1200" height="750" loading="lazy"><span class="theme">Strategy</span></figure>
+        <div class="paper-body">
+          <span class="module">Technology Strategy · Dec 2024</span>
+          <h4>Exoskeletons across the technology lifecycle</h4>
+          <p>A conceptual map of technology strategy frameworks laid onto a generic lifecycle, applied to wearable exoskeletons.</p>
+          <a class="read" href="https://drive.google.com/file/d/1iEF-xOiwaac2MtUiFey1ShAjwkHJzokA/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+      <li class="paper" data-theme="systems">
+        <figure class="thumb"><img src="thumbs/viva.jpg" alt="Exploded view of a VivaCity traffic sensor with on-device edge processing and AI computer vision." width="900" height="556" loading="lazy"><span class="theme">Systems &amp; risk</span></figure>
+        <div class="paper-body">
+          <span class="module">Systems Thinking &amp; Engineering Management · Nov 2024</span>
+          <h4>VivaCity and smart traffic control in London</h4>
+          <p>Applies UCL's systems engineering principles to VivaCity's smart traffic sensors, in a city where peak traffic still moves at about 10 mph.</p>
+          <a class="read" href="https://drive.google.com/file/d/1j1YGLao3ku5TLDvHw0fJTlnlragicawq/view" target="_blank" rel="noopener">Read paper <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="education" class="block wrap" aria-labelledby="education-h">
+    <div class="section-head">
+      <span class="kicker">Education &amp; skills</span>
+      <h2 id="education-h">Technical grounding, commercial focus</h2>
+    </div>
+    <div class="two-col">
+      <div class="edu">
+        <div class="edu-item">
+          <img class="crest" src="logos/ucl.svg" alt="UCL logo" width="52" height="52">
+          <span class="dates">Sept 2024 – Sept 2025</span>
+          <h3>University College London</h3>
+          <span class="degree">MSc Technology Management <span>· Merit</span></span>
+          <p class="small">Technology Strategy; Risk, Reliability and Resilience; New Product Development; Transformation for Sustainability; Business Environment; Emerging Technologies.</p>
+        </div>
+        <div class="edu-item">
+          <img class="crest" src="logos/bath.svg" alt="University of Bath logo" width="52" height="52">
+          <span class="dates">Sept 2019 – July 2022</span>
+          <h3>University of Bath</h3>
+          <span class="degree">BSc Computer Science</span>
+          <p class="small">Human-Computer Interaction; Data Analysis and Visualisation; Digital Business Innovation; AI and Machine Learning; Advanced Programming.</p>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg>Delivery</h3>
+          <ul class="chips"><li>End-to-end delivery ownership</li><li>Programme &amp; project management</li><li>Agile &amp; Scrum ways of working</li><li>Workflow automation</li><li>Critical path &amp; dependency management</li><li>RAID &amp; risk management</li><li>Delivery KPIs &amp; reporting</li><li>Change &amp; adoption</li><li>Rollout planning</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg>Consulting</h3>
+          <ul class="chips"><li>Customer discovery</li><li>Stakeholder management</li><li>Workshop facilitation</li><li>Requirements &amp; business analysis</li><li>Solution design</li><li>Business cases</li><li>Effort estimation &amp; SoWs</li><li>Financial analysis</li><li>Senior leadership reporting</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg>Sales &amp; growth</h3>
+          <ul class="chips"><li>Pre-sales</li><li>Pipeline building &amp; management</li><li>Prospecting &amp; outbound</li><li>AI-assisted lead research</li><li>Account planning</li><li>Value-based pitching</li><li>Live demos</li><li>Proposals &amp; bids</li><li>Go-to-market strategy</li><li>Pricing &amp; messaging experiments</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Technical</h3>
+          <ul class="chips"><li>Python</li><li>SQL</li><li>Power BI</li><li>Azure DevOps</li><li>AI &amp; LLM tooling</li><li>Jira</li><li>Confluence</li><li>Excel &amp; Sheets</li><li>Office 365</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Courses</h3>
+          <ul class="chips"><li>Anthropic AI Fluency</li><li>Harvard CS50</li><li>Google Project Management</li><li>BCS Business Analysis Practitioner</li><li>Pinnacle High Impact Communication</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="block wrap" aria-labelledby="about-h">
+    <div class="section-head">
+      <span class="kicker">About</span>
+      <h2 id="about-h">Find out more about me</h2>
+      <p>Read what I'm writing, or follow what I get up to outside work.</p>
+    </div>
+    <div class="about-grid">
+      <article class="blog" aria-labelledby="blog-h">
+        <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-pen"/></svg></span>
+        <span class="label">Blog</span>
+        <h3 id="blog-h">Getting back into development with AI</h3>
+        <p>I'm documenting my return to building software with AI: the obstacles most people hit, and how to get past them to use AI to its full extent. I also share research and other finds from the areas I'm interested in.</p>
+        <a class="btn" href="https://substack.com/@shivsstack" target="_blank" rel="noopener">Read the blog <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <ul class="interests" aria-label="Outside work">
+        <li class="interest">
+          <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-music"/></svg></span>
+          <div><b>Sitar</b><span class="sub">Classical Indian music</span></div>
+          <a href="https://www.youtube.com/watch?v=0Q7A3_Q17_0" target="_blank" rel="noopener">
+            <svg class="yt" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11.2 5.6v8.8L18.6 10z" fill="#ffffff"/></svg>
+            Watch on YouTube
+          </a>
+        </li>
+        <li class="interest">
+          <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-pulse"/></svg></span>
+          <div><b>Fitness</b><span class="sub">Long-distance running</span></div>
+          <a href="https://www.strava.com/athletes/129987316" target="_blank" rel="noopener">Add me on Strava <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+        <li class="interest">
+          <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-chef"/></svg></span>
+          <div><b>Cooking</b><span class="sub">Recipes on my TikTok account</span></div>
+          <a href="https://www.tiktok.com/@__shivsharma" target="_blank" rel="noopener">@__shivsharma <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<section id="contact" class="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <span class="kicker">Contact</span>
+    <h2 id="contact-h">Have a delivery problem worth solving?</h2>
+    <p>I'm happy to talk about consulting roles, technology adoption in healthcare and energy, or anything in my research.</p>
+    <div class="contact-row">
+      <span class="email-box">
+        <svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>
+        <code id="email">shivanshsharma2301@gmail.com</code>
+        <button type="button" id="copy-email">Copy</button>
+      </span>
+      <a class="btn btn-light" href="https://www.linkedin.com/in/shivansh-sharma-230201/" target="_blank" rel="noopener">LinkedIn <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-light" href="https://substack.com/@shivsstack" target="_blank" rel="noopener">Blog <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Shivansh Sharma</span>
+    <span>London, United Kingdom</span>
+    <span class="credits">Photos: power station, cooling towers and ocean plastic from <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Exoskeleton by Fabdu30, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> via Wikimedia Commons. Logos belong to their owners.</span>
+  </div>
+</footer>
+
+<script>
+  // Copy email: clipboard first, fall back to selecting the text.
+  (function () {
+    var btn = document.getElementById("copy-email");
+    var email = document.getElementById("email");
+    var status = document.getElementById("copy-status");
+    function selectText() {
+      var r = document.createRange();
+      r.selectNodeContents(email);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      status.textContent = "Email selected. Press Ctrl+C or ⌘C to copy.";
+    }
+    btn.addEventListener("click", function () {
+      var text = email.textContent.trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = "Copied";
+          status.textContent = "Email address copied.";
+          setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+        }, selectText);
+      } else {
+        selectText();
+      }
+    });
+  })();
+
+  // Filter papers by theme; the first card only spans two columns in the full list.
+  (function () {
+    var list = document.getElementById("papers");
+    var buttons = document.querySelectorAll(".filters button");
+    var papers = list.querySelectorAll(".paper");
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var f = b.getAttribute("data-filter");
+        buttons.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        list.classList.toggle("is-all", f === "all");
+        papers.forEach(function (p) {
+          p.hidden = f !== "all" && p.getAttribute("data-theme") !== f;
+          p.style.animation = "none"; void p.offsetWidth; p.style.animation = "";
+        });
+      });
+    });
+  })();
+
+  // Highlight the nav link for the section in view.
+  (function () {
+    var links = {};
+    document.querySelectorAll(".nav a[href^='#']").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    if (!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var a = links[e.target.id];
+        if (!a || !e.isIntersecting) return;
+        Object.keys(links).forEach(function (k) { links[k].removeAttribute("aria-current"); });
+        a.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(links).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  })();
+</script>
