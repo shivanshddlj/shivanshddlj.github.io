@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shivansh Sharma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="description" content="Shivansh Sharma, strategy and technology consultant in London. Client discovery, delivery and automation across healthcare and energy, with a computer science background.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,26 +36,33 @@
     --font-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
     --font-label: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 
+    /* type scale on a 16px base */
     --step--1: 0.8125rem;
-    --step-0: 1.0625rem;
-    --step-1: 1.25rem;
-    --step-2: 1.625rem;
-    --step-3: clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
-    --step-4: clamp(2.4rem, 1.5rem + 3.6vw, 3.9rem);
+    --step-0: 1rem;
+    --step-1: 1.125rem;
+    --step-2: 1.5rem;
+    --step-3: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem);
+    --step-4: clamp(2.25rem, 1.4rem + 3.2vw, 3.5rem);
+
+    /* spacing rhythm */
+    --section-y: clamp(56px, 8vw, 96px);
+    --header-h: 64px;
 
     --measure: 68ch;
-    --wide: 1160px;
-    --gutter-l: max(16px, env(safe-area-inset-left, 0px));
-    --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+    --wide: 1200px;
+    --gutter: clamp(20px, 4vw, 40px);
+    --gutter-l: max(var(--gutter), env(safe-area-inset-left, 0px));
+    --gutter-r: max(var(--gutter), env(safe-area-inset-right, 0px));
     --ease: cubic-bezier(.2, .7, .2, 1);
     color-scheme: light;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 
   body {
+    margin: 0;
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-body);
@@ -71,6 +79,8 @@
 
   h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
   p { margin: 0; }
+  img, svg { max-width: 100%; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   .i { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 
   .wrap { max-width: var(--wide); margin-inline: auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
@@ -85,22 +95,34 @@
     backdrop-filter: saturate(1.4) blur(10px);
     border-bottom: 1px solid var(--rule);
   }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.0625rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
-  .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--ultramarine); color: var(--paper); font-size: 0.8125rem; letter-spacing: 0; }
+  .header-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
+  .brand { font-size: 1.0625rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; white-space: nowrap; }
   .brand:hover { color: var(--ink); }
-  .brand:hover .brand-mark { background: var(--sienna); }
-  .nav { display: flex; align-items: center; gap: 2px; }
-  .nav a { position: relative; color: var(--ink-soft); text-decoration: none; font-size: 0.9375rem; font-weight: 500; padding: 8px 11px; border-radius: 6px; }
-  .nav a:not(.nav-cta)::after { content: ""; position: absolute; left: 11px; right: 11px; bottom: 3px; height: 2px; background: var(--sienna-bright); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
-  .nav a:not(.nav-cta):hover::after, .nav a[aria-current="true"]::after { transform: scaleX(1); }
-  .nav a:hover, .nav a[aria-current="true"] { color: var(--ultramarine); }
-  .nav .nav-cta { background: var(--ultramarine); color: var(--paper); margin-left: 8px; padding-inline: 14px; transition: background .2s; }
-  .nav .nav-cta:hover { background: var(--ultramarine-deep); color: var(--paper); }
-  @media (max-width: 800px) { .nav a:not(.nav-cta) { display: none; } }
+  .nav { display: flex; align-items: center; gap: 8px; }
+  .nav-links { display: flex; align-items: center; gap: 2px; }
+  .nav-links a { position: relative; color: var(--ink-soft); text-decoration: none; font-size: 0.9375rem; font-weight: 500; padding: 8px 12px; border-radius: 6px; }
+  .nav-links a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px; height: 2px; background: var(--sienna-bright); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+  .nav-links a:hover::after, .nav-links a[aria-current="true"]::after { transform: scaleX(1); }
+  .nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--ultramarine); }
+  .nav-cta { display: inline-flex; align-items: center; height: 40px; padding-inline: 16px; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; text-decoration: none; background: var(--ultramarine); color: var(--paper); white-space: nowrap; transition: background .2s; }
+  .nav-cta:hover { background: var(--ultramarine-deep); color: var(--paper); }
+  .menu-toggle { display: none; }
+  @media (max-width: 900px) {
+    .nav-cta { order: 1; }
+    .menu-toggle { order: 2; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); color: var(--ink); cursor: pointer; }
+    .menu-toggle .i { width: 20px; height: 20px; }
+    .menu-toggle .i-close, .menu-toggle[aria-expanded="true"] .i-open { display: none; }
+    .menu-toggle[aria-expanded="true"] .i-close { display: block; }
+    .nav-links { position: absolute; left: 0; right: 0; top: 100%; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 4px var(--gutter-r) 12px var(--gutter-l); background: var(--paper); border-bottom: 1px solid var(--rule); box-shadow: 0 18px 24px -22px rgba(22, 26, 46, .45); }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 0; font-size: 1rem; border-radius: 0; }
+    .nav-links a + a { border-top: 1px solid var(--rule); }
+    .nav-links a::after { display: none; }
+  }
+  @media (max-width: 360px) { .nav-cta { display: none; } }
 
   /* ---------- hero ---------- */
-  .hero { position: relative; isolation: isolate; padding-block: clamp(56px, 9vw, 112px) clamp(40px, 6vw, 72px); }
+  .hero { position: relative; isolation: isolate; padding-block: clamp(48px, 8vw, 96px) clamp(40px, 6vw, 72px); }
   /* gradient glow: two soft lights behind the hero that drift slowly */
   .hero::before, .hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; filter: blur(90px); }
   .hero::before { width: 560px; height: 560px; right: -140px; top: -220px; background: var(--ultramarine); opacity: .26; animation: drift-a 18s ease-in-out infinite alternate; }
@@ -116,9 +138,21 @@
   .eyebrow .live { color: var(--ink-soft); }
   .eyebrow .live::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--sienna-bright); margin-right: 8px; vertical-align: 1px; box-shadow: 0 0 0 0 var(--sienna-bright); animation: ping 2.4s var(--ease) infinite; }
   @keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sienna-bright) 55%, transparent); } 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
-  .hero h1 { font-weight: 600; font-size: var(--step-4); line-height: 1.05; letter-spacing: -0.035em; margin-top: 22px; max-width: 17ch; }
+  .hero h1 { font-weight: 600; font-size: var(--step-4); line-height: 1.08; letter-spacing: -0.035em; margin-top: 20px; max-width: 18ch; }
   .hero h1 em { font-style: normal; color: var(--sienna); }
-  .hero .lede { margin-top: 24px; max-width: 56ch; font-size: var(--step-1); line-height: 1.55; color: var(--ink-soft); }
+  /* typed headline: an invisible copy of the final line reserves the space, the live line types over it */
+  .typed { display: grid; }
+  .typed > [aria-hidden] { grid-area: 1 / 1; }
+  .typed-live { display: none; }
+  .js .typed-live { display: block; }
+  .js .typed-ghost { visibility: hidden; }
+  .caret { display: inline-block; width: 3px; height: 0.85em; margin-left: 4px; vertical-align: -0.06em; background: var(--sienna-bright); border-radius: 2px; animation: blink 1s steps(1) infinite; transition: opacity .4s; }
+  .caret.typing { animation: none; }
+  .caret.done { opacity: 0; animation: none; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .reveal { transition: opacity .7s var(--ease), transform .7s var(--ease), visibility .7s; }
+  .js .reveal:not(.in) { opacity: 0; transform: translateY(10px); visibility: hidden; }
+  .hero .lede { margin-top: 24px; max-width: 58ch; font-size: var(--step-1); line-height: 1.6; color: var(--ink-soft); }
   .hero .lede strong { color: var(--ink); font-weight: 600; }
   .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
   .btn {
@@ -173,9 +207,9 @@
   }
 
   /* ---------- sections ---------- */
-  section.block { padding-block: clamp(64px, 9vw, 104px); }
+  section.block { padding-block: var(--section-y); }
   section.block + section.block { border-top: 1px solid var(--rule); }
-  .section-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: var(--measure); }
+  .section-head { display: grid; gap: 12px; margin-bottom: clamp(28px, 4vw, 44px); max-width: var(--measure); }
   .kicker { font-size: var(--step--1); font-weight: 600; color: var(--sienna); letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; }
   .kicker::before { content: ""; width: 22px; height: 2px; background: currentColor; }
   .section-head h2 { font-weight: 600; font-size: var(--step-3); line-height: 1.12; letter-spacing: -0.03em; }
@@ -341,7 +375,7 @@
   /* contact */
   .contact { position: relative; background: var(--ultramarine); color: var(--paper); overflow: hidden; }
   .contact::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(color-mix(in srgb, var(--paper) 14%, transparent) 1px, transparent 1.4px); background-size: 22px 22px; -webkit-mask-image: linear-gradient(110deg, transparent 35%, #000); mask-image: linear-gradient(110deg, transparent 35%, #000); }
-  .contact .wrap { position: relative; padding-block: clamp(64px, 9vw, 104px); display: grid; gap: 22px; }
+  .contact .wrap { position: relative; padding-block: var(--section-y); display: grid; gap: 22px; }
   .contact .kicker { color: var(--on-ultramarine-accent); }
   .contact h2 { font-weight: 600; font-size: var(--step-3); line-height: 1.12; letter-spacing: -0.03em; max-width: 20ch; }
   .contact p { max-width: 56ch; color: var(--on-ultramarine-soft); }
@@ -391,14 +425,21 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <div class="wrap">
+  <div class="wrap header-bar">
     <a class="brand" href="#top">Shivansh Sharma</a>
     <nav class="nav" aria-label="Main">
-      <a href="#approach">Approach</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#research">Research</a>
-      <a href="#about">About</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="sr-only">Menu</span>
+        <svg class="i i-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i i-close" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div id="nav-links" class="nav-links">
+        <a href="#approach">Approach</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#about">About</a>
+      </div>
       <a class="nav-cta" href="#contact">Get in touch</a>
     </nav>
   </div>
@@ -412,12 +453,16 @@
         <span>London, UK</span>
         <span>BSc Computer Science · MSc Technology Management</span>
       </p>
-      <h1>I turn messy technology problems into <em>delivered</em> outcomes.</h1>
-      <p class="lede">
-        Strategy and technology consultant with <strong>3+ years</strong> across <strong>healthcare and energy</strong>.
-        I lead customer discovery, shape the proposition and business case, then stay through delivery, increasingly using AI and automation to make delivery faster and easier to adopt.
+      <h1 class="typed">
+        <span class="sr-only">I am the one who gets it over the line.</span>
+        <span class="typed-ghost" aria-hidden="true">I am the one who gets it <em>over the line</em>.</span>
+        <span class="typed-live" aria-hidden="true">I am <span class="typed-text"></span><span class="caret"></span></span>
+      </h1>
+      <p class="lede reveal">
+        Hi, my name's Shiv and I'm a technology consultant at Glue Reply in London.
+        I have experience leading customer discovery, shaping propositions and business cases, and seeing projects through to delivery across <strong>healthcare and energy</strong>, increasingly using AI and automation to get there faster.
       </p>
-      <div class="actions">
+      <div class="actions reveal">
         <a class="btn btn-primary" href="#contact">Start a conversation</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/shivansh-sharma-230201/" target="_blank" rel="noopener">
           LinkedIn profile <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -822,6 +867,78 @@
 </footer>
 
 <script>
+  // Typed headline: three roles typed and deleted, then the final line stays and the intro fades in.
+  // Text between asterisks is highlighted.
+  (function () {
+    var h1 = document.querySelector(".typed");
+    if (!h1) return;
+    var out = h1.querySelector(".typed-text");
+    var caret = h1.querySelector(".caret");
+    var phrases = ["a technology consultant", "a technical project lead", "an AI product builder", "the one who gets it *over the line*."];
+
+    function parse(s) {
+      var chars = [], hi = false;
+      for (var i = 0; i < s.length; i++) {
+        if (s[i] === "*") { hi = !hi; continue; }
+        chars.push({ c: s[i], hi: hi });
+      }
+      return chars;
+    }
+    function render(chars, n) {
+      out.textContent = "";
+      var el = null, hi = null;
+      for (var i = 0; i < n; i++) {
+        if (chars[i].hi !== hi) { hi = chars[i].hi; el = document.createElement(hi ? "em" : "span"); out.appendChild(el); }
+        el.textContent += chars[i].c;
+      }
+    }
+    function finish() {
+      caret.classList.remove("typing");
+      document.querySelectorAll(".reveal").forEach(function (r) { r.classList.add("in"); });
+      setTimeout(function () { caret.classList.add("done"); }, 2400);
+    }
+
+    var last = parse(phrases[phrases.length - 1]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      render(last, last.length);
+      caret.classList.add("done");
+      finish();
+      return;
+    }
+
+    var p = 0, n = 0, deleting = false;
+    function tick() {
+      var chars = parse(phrases[p]);
+      caret.classList.add("typing");
+      if (!deleting) {
+        render(chars, ++n);
+        if (n < chars.length) return setTimeout(tick, 40 + Math.random() * 50);
+        if (p === phrases.length - 1) return finish();
+        caret.classList.remove("typing");
+        deleting = true;
+        return setTimeout(tick, 1100);
+      }
+      render(chars, --n);
+      if (n > 0) return setTimeout(tick, 24);
+      deleting = false;
+      p++;
+      caret.classList.remove("typing");
+      setTimeout(tick, 350);
+    }
+    setTimeout(tick, 600);
+  })();
+
+  // Mobile menu: toggle the link panel, close it on a link, Escape or a wider screen.
+  (function () {
+    var btn = document.querySelector(".menu-toggle");
+    var panel = document.getElementById("nav-links");
+    function set(open) { btn.setAttribute("aria-expanded", String(open)); panel.classList.toggle("open", open); }
+    btn.addEventListener("click", function () { set(btn.getAttribute("aria-expanded") !== "true"); });
+    panel.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && panel.classList.contains("open")) { set(false); btn.focus(); } });
+    window.matchMedia("(min-width: 901px)").addEventListener("change", function (m) { if (m.matches) set(false); });
+  })();
+
   // Copy email: clipboard first, fall back to selecting the text.
   (function () {
     var btn = document.getElementById("copy-email");
@@ -870,7 +987,7 @@
   // Highlight the nav link for the section in view.
   (function () {
     var links = {};
-    document.querySelectorAll(".nav a[href^='#']").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    document.querySelectorAll(".nav-links a[href^='#']").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
     if (!("IntersectionObserver" in window)) return;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
