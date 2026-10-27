@@ -138,7 +138,7 @@
   .eyebrow .live { color: var(--ink-soft); }
   .eyebrow .live::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--sienna-bright); margin-right: 8px; vertical-align: 1px; box-shadow: 0 0 0 0 var(--sienna-bright); animation: ping 2.4s var(--ease) infinite; }
   @keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sienna-bright) 55%, transparent); } 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
-  .hero h1 { font-weight: 600; font-size: var(--step-4); line-height: 1.08; letter-spacing: -0.035em; margin-top: 20px; max-width: 18ch; }
+  .hero h1 { font-weight: 600; font-size: var(--step-4); line-height: 1.08; letter-spacing: -0.035em; max-width: 18ch; }
   .hero h1 em { font-style: normal; color: var(--sienna); }
   /* typed headline: an invisible copy of the final line reserves the space, the live line types over it */
   .typed { display: grid; }
@@ -448,11 +448,6 @@
 <main id="main">
   <div id="top" class="hero wrap">
     <div class="hero-copy">
-      <p class="eyebrow">
-        <span class="live">Consultant at Glue Reply</span>
-        <span>London, UK</span>
-        <span>BSc Computer Science · MSc Technology Management</span>
-      </p>
       <h1 class="typed">
         <span class="sr-only">I am the one who gets it over the line.</span>
         <span class="typed-ghost" aria-hidden="true">I am the one who gets it <em>over the line</em>.</span>
